@@ -30,12 +30,6 @@ import secrets
 from fastapi import (
     Request
 )
-from app.ml.predictor import (
-    predict_fracture,
-    predict_tumor,
-    predict_cancer,
-    predict_tb
-)
 
 def hash_reset_code(code: str):
     return hashlib.sha256(
@@ -124,7 +118,7 @@ async def signup(
         try:
             profile_result = upload_image(
                 profile_photo,
-                f"medscan-ai/users/{user_id}/profile"
+                f"PlantDx/users/{user_id}/profile"
             )
 
             profile_photo_url = profile_result["url"]
@@ -271,7 +265,7 @@ async def edit_profile(
         try:
             new_profile_result = upload_image(
                 profile_photo,
-                f"medscan-ai/users/{user_id}/profile"
+                f"PlantDx/users/{user_id}/profile"
             )
 
             update_data["profile_photo"] = new_profile_result

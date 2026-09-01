@@ -22,7 +22,5 @@ class Settings:
     SMTP_PASSWORD = os.getenv("SMTP_PASSWORD")
     SMTP_FROM_EMAIL = os.getenv("SMTP_FROM_EMAIL")
 
-    FRONTEND_URL = os.getenv("FRONTEND_URL")
-
 
 settings = Settings()

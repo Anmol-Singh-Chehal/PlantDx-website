@@ -6,10 +6,10 @@ from huggingface_hub import hf_hub_download
 from dotenv import load_dotenv
 
 from app.ml.architectures import (
-    FractureNet,
-    TumorNet,
-    LungCancerNet,
-    TBNet
+    AppleNet,
+    CherryNet,
+    GrapeNet,
+    MangoNet
 )
 
 
@@ -122,18 +122,43 @@ def load_checkpoint(model, checkpoint_path):
 
 
 # ============================================================
-# FractureNet
+# AppleNet
 # ============================================================
 
-def load_fracture_model():
+def load_apple_model():
 
     checkpoint_path = download_model(
-        "Proposed_FractureNet_best.pth"
+        "Proposed_AppleNet_best.pth"
     )
 
-    model = FractureNet(
+    model = AppleNet(
+        num_classes=3,
+    )
+
+    model = load_checkpoint(
+        model,
+        checkpoint_path
+    )
+
+    model.to(DEVICE)
+
+    model.eval()
+
+    return model
+
+
+# ============================================================
+# CherryNet
+# ============================================================
+
+def load_cherry_model():
+
+    checkpoint_path = download_model(
+        "Proposed_CherryNet_best.pth"
+    )
+
+    model = CherryNet(
         num_classes=2,
-        freeze_backbones=False
     )
 
     model = load_checkpoint(
@@ -149,18 +174,17 @@ def load_fracture_model():
 
 
 # ============================================================
-# TumorNet
+# GrapeNet
 # ============================================================
 
-def load_tumor_model():
+def load_grape_model():
 
     checkpoint_path = download_model(
-        "Proposed_TumorNet_best.pth"
+        "Proposed_GrapeNet_best.pth"
     )
 
-    model = TumorNet(
+    model = GrapeNet(
         num_classes=4,
-        freeze_backbones=False
     )
 
     model = load_checkpoint(
@@ -176,45 +200,17 @@ def load_tumor_model():
 
 
 # ============================================================
-# Lung Cancer
+# MangoNet
 # ============================================================
 
-def load_lung_cancer_model():
+def load_mango_model():
 
     checkpoint_path = download_model(
-        "Proposed_LungCancerNet_best.pth"
+        "Proposed_MangoNet_best.pth"
     )
 
-    model = LungCancerNet(
-        num_classes=4,
-        freeze_backbones=False
-    )
-
-    model = load_checkpoint(
-        model,
-        checkpoint_path
-    )
-
-    model.to(DEVICE)
-
-    model.eval()
-
-    return model
-
-
-# ============================================================
-# TB
-# ============================================================
-
-def load_tb_model():
-
-    checkpoint_path = download_model(
-        "Proposed_TBNet_best.pth"
-    )
-
-    model = TBNet(
-        num_classes=2,
-        freeze_backbones=False
+    model = MangoNet(
+        num_classes=8,
     )
 
     model = load_checkpoint(
@@ -236,24 +232,24 @@ def load_tb_model():
 def load_all_models():
 
     print("=" * 60)
-    print("Loading MedScan AI ML models")
+    print("Loading PlantDx ML models")
     print("=" * 60)
 
     print(f"Device: {DEVICE}")
 
     models = {}
 
-    print("\n[1/3] Loading FractureNet...")
-    models["fracture"] = load_fracture_model()
+    print("\n[1/3] Loading AppleNet...")
+    models["apple"] = load_apple_model()
 
-    print("\n[2/3] Loading TumorNet...")
-    models["tumor"] = load_tumor_model()
+    print("\n[2/3] Loading CherryNet...")
+    models["cherry"] = load_cherry_model()
 
-    # print("\n[3/4] Loading LungCancerNet...")
-    # models["cancer"] = load_lung_cancer_model()
+    print("\n[3/4] Loading GrapeNet...")
+    models["grape"] = load_grape_model()
 
-    print("\n[3/3] Loading TBNet...")
-    models["tb"] = load_tb_model()
+    print("\n[3/3] Loading MangoNet...")
+    models["mango"] = load_mango_model()
 
     print("\n" + "=" * 60)
     print("ALL MODELS LOADED SUCCESSFULLY")

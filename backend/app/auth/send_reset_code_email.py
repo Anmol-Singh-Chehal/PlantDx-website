@@ -13,13 +13,13 @@ async def send_reset_code_email(
 
     message["From"] = settings.SMTP_FROM_EMAIL
     message["To"] = email
-    message["Subject"] = "MedScan AI Password Reset Code"
+    message["Subject"] = "PlantDx Password Reset Code"
 
     message.set_content(
         f"""
 Hello,
 
-Your MedScan AI password reset code is:
+Your PlantDx password reset code is:
 
 {code}
 
@@ -27,7 +27,7 @@ This code will expire in 10 minutes.
 
 If you did not request a password reset, please ignore this email.
 
-MedScan AI
+PlantDx
 """
     )
 

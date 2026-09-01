@@ -17,7 +17,7 @@ from app.detection.routes import router as detection_router
 async def lifespan(app: FastAPI):
     print("\n")
     print("=" * 60)
-    print("Starting MedScan AI")
+    print("Starting PlantDx")
     print("=" * 60)
 
     # --------------------------------------------------------
@@ -28,7 +28,7 @@ async def lifespan(app: FastAPI):
 
     print("\n")
     print("=" * 60)
-    print("MedScan AI is READY")
+    print("PlantDx is READY")
     print("=" * 60)
 
     yield
@@ -37,7 +37,7 @@ async def lifespan(app: FastAPI):
     # Shutdown
     # --------------------------------------------------------
 
-    print("\nShutting down MedScan AI...")
+    print("\nShutting down PlantDx...")
     app.state.models.clear()
     print("Models released.")
 
@@ -47,8 +47,8 @@ async def lifespan(app: FastAPI):
 # ============================================================
 
 app = FastAPI(
-    title="MedScan AI",
-    description="Medical imaging AI backend",
+    title="PlantDx",
+    description="PlantDx backend",
     version="1.0.0",
     lifespan=lifespan
 )
@@ -88,7 +88,7 @@ app.include_router(
 @app.get("/")
 def root():
     return {
-        "message": "MedScan AI API is running"
+        "message": "PlantDx API is running"
     }
 
 
@@ -104,9 +104,10 @@ def health_check():
             "status": "healthy",
             "database": "connected",
             "models": {
-                "fracture": "loaded",
-                "tumor": "loaded",
-                "tb": "loaded"
+                "AppleNet": "loaded",
+                "CherryNet": "loaded",
+                "GrapeNet": "loaded",
+                "MangoNet": "loaded"
             }
         }
 

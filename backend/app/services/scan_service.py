@@ -57,7 +57,7 @@ async def save_prediction(
 
         image_data = upload_image(
             image,
-            folder=f"medscan-ai/users/{user_id}/scans"
+            folder=f"PlantDx/users/{user_id}/scans"
         )
 
         # ----------------------------------------------------
