@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Cascadia+Code:ital,wght@0,200..700;1,200..700&family=Geist+Mono:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --primary: #1B2114;
+  --muted: #5C9A2E;
+  --secondary: #5C6653;
+  --accent: #E8792E;
+  --paper-1: color-mix(in srgb, var(--muted) 10%, transparent);
+  --paper-2: color-mix(in srgb, var(--muted) 28%, transparent);
+}
+
+.dark {
+  --primary: #EFF6E7;
+  --muted: #8FD35C;
+  --secondary: #B7C4AA;
+  --accent: #FFA24E;
+
+  --paper-1: #151C10;
+  --paper-2: #0E1309;
+}
+
+@theme inline {
+  --breakpoint-sm: 300px;
+  --breakpoint-md: 600px;
+  --breakpoint-lg: 900px;
+  --breakpoint-xl: 1200px;
+
+  --color-primary: var(--primary);
+  --color-muted: var(--muted);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
+  --color-paper-1: var(--paper-1);
+  --color-paper-2: var(--paper-2);
+
+  --font-primary: "Inter", sans-serif;
+  --font-secondary: "Open Sans", sans-serif;
+}
+
+@layer components {
+  .btn-1 {
+    @apply text-white sm:text-sm bg-muted sm:px-2.5 sm:py-1 lg:px-3 lg:py-1.5 lg:text-[16px] rounded-full cursor-pointer font-medium ring-muted ring-1 font-primary;
+  }
+
+  .btn-2 {
+    @apply text-muted sm:text-sm hover:bg-muted hover:text-white sm:px-2.5 sm:py-1 lg:px-3 lg:py-1.5 lg:text-[16px] rounded-full cursor-pointer font-medium ring-1 font-primary;
+  }
+}
