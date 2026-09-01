@@ -239,16 +239,16 @@ def load_all_models():
 
     models = {}
 
-    print("\n[1/3] Loading AppleNet...")
+    print("\n[1/4] Loading AppleNet...")
     models["apple"] = load_apple_model()
 
-    print("\n[2/3] Loading CherryNet...")
+    print("\n[2/4] Loading CherryNet...")
     models["cherry"] = load_cherry_model()
 
     print("\n[3/4] Loading GrapeNet...")
     models["grape"] = load_grape_model()
 
-    print("\n[3/3] Loading MangoNet...")
+    print("\n[4/4] Loading MangoNet...")
     models["mango"] = load_mango_model()
 
     print("\n" + "=" * 60)
